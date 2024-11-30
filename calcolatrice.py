@@ -34,10 +34,7 @@ input_text2 = tk.Entry(window)
 input_text2.grid(row=2, column=0, sticky="W")
 
 
-#operazone per la moltiplicazione
-
-
-
+#operazione per la moltiplicazione
 
 def Operazione_Moltiplicazione():
 
@@ -49,20 +46,8 @@ def Operazione_Moltiplicazione():
    output_risultato.grid(row 1, column=0, sticky"W", padx=10, padx=10)
 
 
-
-
-
-
    moltiplicazione = tk.Button()
    moltiplicazione.grid(row=1)
-
-
-
-
-
-
-
-
 
 
 if __name__=="__main__":
