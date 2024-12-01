@@ -1,55 +1,65 @@
 import tkinter as tk
 
+# Funzione per eseguire il calcolo
+def calcola(operazione):
+    try:
+        # Ottieni i valori dai campi di testo
+        num1 = float(entry1.get())
+        num2 = float(entry2.get())
 
-window = tk.Tk()
+        # Esegui l'operazione selezionata
+        if operazione == 'somma':
+            risultato = num1 + num2
+        elif operazione == 'sottrazione':
+            risultato = num1 - num2
+        elif operazione == 'moltiplicazione':
+            risultato = num1 * num2
+        elif operazione == 'divisione':
+            if num2 != 0:
+                risultato = num1 / num2
+            else:
+                risultato = "Errore: divisione per zero"
+        else:
+            risultato = "Operazione non riconosciuta"
 
+        # Mostra il risultato
+        label_risultato.config(text=f"Risultato: {risultato}")
+    except ValueError:
+        label_risultato.config(text="Errore: inserisci numeri validi")
 
-window.title("Calcolatrice Semplice")
+# Creazione della finestra principale
+root = tk.Tk()
+root.title("Calcolatrice Semplice")
 
+# Creazione dei widget
+label1 = tk.Label(root, text="Inserisci il primo numero:")
+label1.pack()
 
-window.geometry("600x600")
+entry1 = tk.Entry(root)
+entry1.pack()
 
+label2 = tk.Label(root, text="Inserisci il secondo numero:")
+label2.pack()
 
-window.resizable(True, True) #permette di aumentare la grandezza della finestra
+entry2 = tk.Entry(root)
+entry2.pack()
 
+# Etichetta per visualizzare il risultato
+label_risultato = tk.Label(root, text="Risultato: ")
+label_risultato.pack()
 
-window.configure(background="black")
+# Pulsanti per le operazioni
+button_somma = tk.Button(root, text="Somma", command=lambda: calcola('somma'))
+button_somma.pack()
 
+button_sottrazione = tk.Button(root, text="Sottrazione", command=lambda: calcola('sottrazione'))
+button_sottrazione.pack()
 
-#Mettiamo qui i widget
+button_moltiplicazione = tk.Button(root, text="Moltiplicazione", command=lambda: calcola('moltiplicazione'))
+button_moltiplicazione.pack()
 
+button_divisione = tk.Button(root, text="Divisione", command=lambda: calcola('divisione'))
+button_divisione.pack()
 
-etichetta=tk.Label(window, text="Calcolatrice", fg="#FF0000", font=("Helvetica", 16))
-etichetta.grid(row=0, column=0, sticky= "W", padx=10, pady=10)
-
-
-#funzione per stampare button
-
-
-input_text = tk.Entry(window)
-input_text.grid(row=0, column=0, sticky="W")
-
-
-input_text2 = tk.Entry(window)
-input_text2.grid(row=2, column=0, sticky="W")
-
-
-#operazione per la moltiplicazione
-
-def Operazione_Moltiplicazione():
-
-
-   int_input_text = int(input_text.get())
-   int_input_text2 = int(input_text2.get())
-   risultato = int_input_text * int_input_text2
-   output_risultato = tk.Label(window, text=risultato, fg bla bla)
-   output_risultato.grid(row 1, column=0, sticky"W", padx=10, padx=10)
-
-
-   moltiplicazione = tk.Button()
-   moltiplicazione.grid(row=1)
-
-
-if __name__=="__main__":
-   window.mainloop()
-
+# Avvio dell'interfaccia grafica
+root.mainloop()
